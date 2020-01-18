@@ -1,21 +1,21 @@
 package main
 
 import (
-  "fmt"
+	"fmt"
 )
 
 func main() {
-  cards := []Card{Card{2, Diamonds}, Card{3, Diamonds}}
-  deck := Deck{cards}
+	cards := []Card{Card{2, Diamonds}, Card{3, Diamonds}}
+	deck := Deck{cards}
 
-  player1 := Player{[2]Card{Card{4, Diamonds}, Card{5, Diamonds}}, 0}
-  player2 := Player{[2]Card{Card{6, Diamonds}, Card{7, Diamonds}}, 1}
+	player1 := Player{[2]Card{Card{4, Diamonds}, Card{5, Diamonds}}, 0}
+	player2 := Player{[2]Card{Card{6, Diamonds}, Card{7, Diamonds}}, 1}
 
-  flop := [3]Card{Card{8, Diamonds}, Card{9, Diamonds}, Card{10, Diamonds}}
+	flop := [3]Card{Card{8, Diamonds}, Card{9, Diamonds}, Card{10, Diamonds}}
 
-  game := Game{deck, []Player{player1, player2}, flop, Card{11, Diamonds}, Card{12, Diamonds}}
+	game := Game{deck, []Player{player1, player2}, flop, Card{11, Diamonds}, Card{12, Diamonds}}
 
-  fmt.Println(deck)
-  fmt.Println(game)
-  fmt.Println("hello")
+	fmt.Println(deck)
+	fmt.Println(game)
+	fmt.Println("hello")
 }
