@@ -5,8 +5,10 @@ import (
 )
 
 func main() {
-	cards := []Card{Card{2, Diamonds}, Card{3, Diamonds}}
+	cards := []Card{Card{2, Diamonds}, Card{3, Diamonds}, Card{4, Clubs}}
 	deck := Deck{cards}
+
+	deck.Shuffle()
 
 	player1 := Player{[2]Card{Card{4, Diamonds}, Card{5, Diamonds}}, 0}
 	player2 := Player{[2]Card{Card{6, Diamonds}, Card{7, Diamonds}}, 1}

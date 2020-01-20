@@ -1,5 +1,10 @@
 package main
 
+import (
+	"math/rand"
+	"time"
+)
+
 type Suit string
 
 const (
@@ -30,6 +35,8 @@ type Deck struct {
 // Randomize the order of cards in the deck
 func (d *Deck) Shuffle() {
 	// TODO
+	rand.Seed(time.Now().UnixNano())
+	rand.Shuffle(len(d.Cards), func(i, j int) { d.Cards[i], d.Cards[j] = d.Cards[j], d.Cards[i] })
 }
 
 // Remove and return the top numCards cards from d.Cards
