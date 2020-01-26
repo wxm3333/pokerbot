@@ -9,14 +9,14 @@ type Game struct {
 }
 
 func (g *Game) PlayerJoin(buyin int) {
-    g.Players = append(g.Players, NewPlayer(len(g.Players), buyin))
+	g.Players = append(g.Players, NewPlayer(len(g.Players), buyin))
 }
 
 func (g *Game) PlayerLeave(position int) {
-    g.Players = append(g.Players[:position], g.Players[position+1:]...)
+	g.Players = append(g.Players[:position], g.Players[position+1:]...)
 }
 
 func (g *Game) DealToPlayer(position int) {
-    hand := g.D.Deal(2)
-    g.Players[position].Hand = hand
+	hand := []Card{g.D.Deal(), g.D.Deal()}
+	g.Players[position].Hand = hand
 }

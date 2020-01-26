@@ -4,12 +4,12 @@ package main
 type Player struct {
 	Hand     []Card
 	Position int
-    Stack int
+	Stack    int
 }
 
-func NewPlayer (position int, buyin int) Player {
-    return Player{[]Card{}, position, buyin}
- }
+func NewPlayer(position int, buyin int) Player {
+	return Player{[]Card{}, position, buyin}
+}
 
 func (p *Player) Bet() {
 
