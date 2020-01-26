@@ -5,23 +5,16 @@ import (
 )
 
 func main() {
-	deck := NewDeck()
+	player1 := Player{"xiaomin"}
+	player2 := Player{"daniel negreanu"}
+	player3 := Player{"phil ivey"}
 
-	deck.Shuffle()
+	game := NewGame()
 
-	fmt.Println(deck)
+	game.PlayerJoin(player1, 100)
+	game.PlayerJoin(player2, 120)
+	game.PlayerJoin(player3, 200)
 
-	//player1 := Player{[2]Card{Card{4, Diamonds}, Card{5, Diamonds}}, 0}
-	//player2 := Player{[2]Card{Card{6, Diamonds}, Card{7, Diamonds}}, 1}
-
-	flop := [3]Card{Card{8, Diamonds}, Card{9, Diamonds}, Card{10, Diamonds}}
-
-	//game := Game{deck, []Player{player1, player2}, flop, Card{11, Diamonds}, Card{12, Diamonds}}
-	game := Game{deck, []Player{}, flop, Card{11, Diamonds}, Card{12, Diamonds}}
-	game.PlayerJoin(100)
-
-	// fmt.Println(deck)
-	// game.DealToPlayer(0)
 	// fmt.Println(game)
 	// game.PlayerLeave(0)
 	// fmt.Println(game)

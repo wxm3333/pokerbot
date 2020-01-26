@@ -1,14 +1,9 @@
 package main
 
-// Position 0 is dealer.
-type Player struct {
-	Hand     []Card
-	Position int
-	Stack    int
-}
+type PlayerId string
 
-func NewPlayer(position int, buyin int) Player {
-	return Player{[]Card{}, position, buyin}
+type Player struct {
+	Id PlayerId // MUST be unique
 }
 
 func (p *Player) Bet() {
