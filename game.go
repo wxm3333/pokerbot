@@ -29,7 +29,9 @@ func (game *Game) PlayerLeave(player Player) error {
 	return game.Table.PlayerLeave(player)
 }
 
-func (game *Game) DealToPlayer(player Player) error {
-	cards := []Card{game.D.Deal(), game.D.Deal()}
-	return game.Table.DealToPlayer(player, cards)
+func (game *Game) DealCards() {
+	for _, position := range game.Table.SeatedPositions() {
+		cards := []Card{game.D.Deal(), game.D.Deal()}
+		game.Table.DealCardsToPosition(position, cards)
+	}
 }

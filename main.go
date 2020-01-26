@@ -15,7 +15,9 @@ func main() {
 	game.PlayerJoin(player2, 120)
 	game.PlayerJoin(player3, 200)
 
-	// fmt.Println(game)
+	game.DealCards()
+
+	fmt.Println(game)
 	// game.PlayerLeave(0)
 	// fmt.Println(game)
 	// fmt.Println("hello")

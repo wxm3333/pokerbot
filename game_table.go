@@ -5,8 +5,7 @@ import "errors"
 type Position int
 
 const (
-	Button = iota
-	SmallBlind
+	SmallBlind = iota
 	BigBlind
 	UnderTheGun
 	UnderTheGun1
@@ -14,9 +13,12 @@ const (
 	MiddlePosition
 	Hijack
 	Cutoff
+	Button
 )
 
-var AllPositions = [9]Position{Button, SmallBlind, BigBlind, UnderTheGun, UnderTheGun1, UnderTheGun2, MiddlePosition, Hijack, Cutoff}
+// Small blind has first action, and also gets dealt cards first.
+// Button is always last.
+var AllPositions = [9]Position{SmallBlind, BigBlind, UnderTheGun, UnderTheGun1, UnderTheGun2, MiddlePosition, Hijack, Cutoff, Button}
 
 type GameTable struct {
 	Seats  map[Position]Player
@@ -79,6 +81,25 @@ func (table *GameTable) DealToPlayer(player Player, cards []Card) error {
 	if _, exists := table.Stacks[player.Id]; !exists {
 		return errors.New("Player is not seated at the table!")
 	}
+	table.Cards[player.Id] = cards
+	return nil
+}
+
+func (table GameTable) SeatedPositions() []Position {
+	seatedPositions := []Position{}
+	for _, position := range AllPositions {
+		if _, exists := table.Seats[position]; exists {
+			seatedPositions = append(seatedPositions, position)
+		}
+	}
+	return seatedPositions
+}
+
+func (table *GameTable) DealCardsToPosition(position Position, cards []Card) error {
+	if _, exists := table.Seats[position]; !exists {
+		return errors.New("Position is not occupied!")
+	}
+	player := table.Seats[position]
 	table.Cards[player.Id] = cards
 	return nil
 }
