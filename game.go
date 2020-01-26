@@ -31,7 +31,7 @@ func (game *Game) PlayerLeave(player Player) error {
 
 func (game *Game) DealCards() {
 	for _, position := range game.Table.SeatedPositions() {
-		cards := []Card{game.D.Deal(), game.D.Deal()}
+		cards := game.D.Deal(2)
 		game.Table.DealCardsToPosition(position, cards)
 	}
 }

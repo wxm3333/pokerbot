@@ -29,9 +29,9 @@ func (d *Deck) Shuffle() {
 	rand.Shuffle(len(d.Cards), func(i, j int) { d.Cards[i], d.Cards[j] = d.Cards[j], d.Cards[i] })
 }
 
-// Remove and return the top card from the deck
-func (d *Deck) Deal() Card {
-	out := d.Cards[0]
-	d.Cards = d.Cards[1:]
+// Remove and return the top cards from the deck
+func (d *Deck) Deal(numCards int) []Card {
+	out := d.Cards[:numCards]
+	d.Cards = d.Cards[numCards:]
 	return out
 }
